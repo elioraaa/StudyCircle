@@ -1,4 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import {
+  Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn,
+} from 'typeorm';
+import { User } from '../../users/entities/user.entity';
 
 @Entity('groups')
 export class Group {
@@ -19,6 +22,13 @@ export class Group {
 
   @Column({ default: 'online' })
   mode: string;
+
+  @Column({ nullable: true })
+  ownerId: number;
+
+  @ManyToOne(() => User, (user) => user.groups, { nullable: true, onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'ownerId' })
+  owner: User;
 
   @CreateDateColumn()
   createdAt: Date;

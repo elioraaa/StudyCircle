@@ -8,7 +8,7 @@ export default function AppLayout({ children }) {
   return <div className="app-shell">
     <header className="app-topbar glass">
       <Logo />
-      <nav aria-label="Main navigation"><Link to="/groups">Find groups</Link><Link to="/dashboard">Dashboard</Link></nav>
+      <nav aria-label="Main navigation"><Link to="/groups">Find groups</Link><Link to="/dashboard">Dashboard</Link><Link to="/profile">Profile</Link></nav>
       <div className="app-account"><Link className="btn btn-primary" to="/groups/new">Create group</Link>
         {user ? <><span className="avatar" aria-label={user.name}>{initials(user)}</span><button className="btn btn-outline" onClick={logout}>Log out</button></> : <Link className="btn btn-outline" to="/login">Log in</Link>}
       </div>

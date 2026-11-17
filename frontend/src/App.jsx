@@ -11,6 +11,7 @@ import SearchGroups from './pages/SearchGroups.jsx'
 import CreateGroup from './pages/CreateGroup.jsx'
 import GroupDetails from './pages/GroupDetails.jsx'
 import AppLayout from './components/AppLayout.jsx'
+import Profile from './pages/Profile.jsx'
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth()
@@ -35,6 +36,7 @@ export default function App() {
       <Route path="/groups/new" element={<ProtectedRoute><AppLayout><CreateGroup /></AppLayout></ProtectedRoute>} />
       <Route path="/groups/:id" element={<AppLayout><GroupDetails /></AppLayout>} />
       <Route path="/dashboard" element={<ProtectedRoute><AppLayout><Dashboard /></AppLayout></ProtectedRoute>} />
+      <Route path="/profile" element={<ProtectedRoute><AppLayout><Profile /></AppLayout></ProtectedRoute>} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

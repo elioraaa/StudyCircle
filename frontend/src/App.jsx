@@ -7,6 +7,10 @@ import Signup from './pages/Signup.jsx'
 import ForgotPassword from './pages/ForgotPassword.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import NotFound from './pages/NotFound.jsx'
+import SearchGroups from './pages/SearchGroups.jsx'
+import CreateGroup from './pages/CreateGroup.jsx'
+import GroupDetails from './pages/GroupDetails.jsx'
+import AppLayout from './components/AppLayout.jsx'
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth()
@@ -27,7 +31,10 @@ export default function App() {
       <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
       <Route path="/signup" element={<GuestRoute><Signup /></GuestRoute>} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+      <Route path="/groups" element={<AppLayout><SearchGroups /></AppLayout>} />
+      <Route path="/groups/new" element={<ProtectedRoute><AppLayout><CreateGroup /></AppLayout></ProtectedRoute>} />
+      <Route path="/groups/:id" element={<AppLayout><GroupDetails /></AppLayout>} />
+      <Route path="/dashboard" element={<ProtectedRoute><AppLayout><Dashboard /></AppLayout></ProtectedRoute>} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )
